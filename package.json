@@ -8,7 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js"
   },
-  "author": "",
+  "author": "Moreira-Edu, revamped by Davi Viana",
   "license": "ISC",
   "devDependencies": {
     "jest": "^29.0.3"
