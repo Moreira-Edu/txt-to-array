@@ -7,7 +7,7 @@ Leitor assíncrono de arquivos escrito em Node.
 Para executar o leitor, utilize:
 
 ```
-npm index.js [file-path]
+node index.js [file-path]
 ```
 
 ## Tests
