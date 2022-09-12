@@ -28,7 +28,7 @@ export async function readLinesAsync(path, options = {
     }
 
     if (options.callback && options.callback.constructor === Function) {
-      callback(file)
+      options.callback(file)
     }
 
     return file
@@ -36,3 +36,10 @@ export async function readLinesAsync(path, options = {
     throw error
   }
 }
+
+// CLI
+(async function (args = process.argv.slice(2)) {
+  if (!args[0]) return
+
+  console.log((await readLinesAsync(args[0])))
+})()
