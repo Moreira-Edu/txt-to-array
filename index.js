@@ -38,8 +38,10 @@ export async function readLinesAsync(path, options = {
 }
 
 // CLI
-(async function (args = process.argv.slice(2)) {
-  if (!args[0]) return
-
-  console.log((await readLinesAsync(args[0])))
-})()
+if(process && process.argv && process.argv.length) {
+  (async function (args) {
+    if (!args[0]) return
+  
+    console.log((await readLinesAsync(args[0])))
+  })(process.argv.slice(2))
+}
