@@ -1,4 +1,5 @@
 import { readFile } from "fs/promises";
+import { isValidPath } from './helpers/resolver.js'
 
 /**
  * Lê um arquivo linha por linha.
@@ -13,23 +14,24 @@ export async function readLinesAsync(path, options = {
    */
   callback: (lines) => {},
   /**
-   * Executado a cada linha.
-   * @param {*} line a linha carregada.
-   */
-  handler: (line) => {},
-  /**
    * Representa o End-Of-Line Character. Caso não fornecido, o arquivo será retornado como `string` ao invés de `string[]`.
    */
   eol: '\n',
 }, encoding = 'utf-8') {
+  if (!isValidPath(path)) throw new Error('Not a valid file path')
+
   try {
-    const file = await readFile(path, { encoding })
+    let file = await readFile(path, { encoding })
 
     if(options.eol) {
-      return file.split(options.eol)
-    } else {
-      return file
+      file = file.split(options.eol)
     }
+
+    if (options.callback && options.callback.constructor === Function) {
+      callback(file)
+    }
+
+    return file
   } catch(error) {
     throw error
   }
