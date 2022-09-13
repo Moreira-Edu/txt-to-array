@@ -2,11 +2,17 @@
   "name": "txttostring",
   "version": "1.0.0",
   "description": "",
-  "main": "txtToString.js",
+  "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha",
+    "lint": "prettier --write .",
+    "start": "node index.js ./test/data/ptBR_dict.txt"
   },
-  "author": "",
-  "license": "ISC"
+  "author": "Moreira-Edu, revamped by Davi Viana",
+  "license": "ISC",
+  "devDependencies": {
+    "mocha": "^10.0.0",
+    "prettier": "^2.7.1"
+  }
 }
